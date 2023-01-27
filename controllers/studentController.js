@@ -2,9 +2,17 @@ const { Student, Course } = require('../models');
 
 // TODO: Crear una función agregada para obtener la cantidad de estudiantes en general
 const headCount = async () =>
-  Student.aggregate()
-    // Su código aquí
-    .then((numberOfStudents) => numberOfStudents);
+  Student.aggregate( // Su código aquí
+    [
+      {
+        $group:{
+          _id:null,
+          total : {$sum:1}
+        }
+      }
+
+    ]    
+  ).then((numberOfStudents) => numberOfStudents);
 
 // TODO: Crear una función que ejecute el método agregado en el modelo de estudiante y que calcule la calificación general utilizando el operador $prom
 const grade = async (studentId) =>
@@ -14,6 +22,10 @@ const grade = async (studentId) =>
     },
     {
       // Su código aquí
+      $group :{
+        _id: null,
+        avg : { $avg : '$assignments.score'}
+      }      
     },
   ]);
 
