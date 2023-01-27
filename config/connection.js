@@ -8,6 +8,9 @@ const connectionString =
 connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+
+  useCreateIndex: true,
+    useFindAndModify: false,
 });
 
 module.exports = connection;
