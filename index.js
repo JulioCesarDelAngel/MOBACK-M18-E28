@@ -4,7 +4,7 @@ const routes = require('./routes');
 
 const cwd = process.cwd();
 
-const PORT = process.env.port || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Nota: No es necesario que el servidor Express funcione. Esto solo ayuda a indicar qué servidor de actividad se está ejecutando en la terminal.
